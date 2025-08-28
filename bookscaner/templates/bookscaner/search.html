@@ -1,0 +1,21 @@
+{% extends "bookscaner/layout.html" %}
+
+{% block body %}
+    <div id="page" hidden>search</div>
+
+    <div class="input-group mb-5">
+        <input type="text" class="form-control" placeholder="Search Titles" id="search-title">
+        <button class="btn btn-secondary" id="search-submit"> 
+            <i class="bi bi-search"></i>
+        </button>        
+    </div>
+
+    <div class="mb-2" id="search-file-div">
+        <h5 class="text-center mb-5">or add a picture of your book!</h5>
+        <input type="file" id="search-picture" class="form-control" accept="image/*">
+    </div>
+
+    <ul class="list-group" id="search-book-list">
+        
+    </ul>
+{% endblock %}

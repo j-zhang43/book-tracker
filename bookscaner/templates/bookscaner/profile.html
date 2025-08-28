@@ -1,0 +1,33 @@
+{% extends "bookscaner/layout.html" %}
+
+{% block body %}
+<div hidden id="page">profile</div>
+
+<h3 class="mb-4"> Hello, {{ user.username }} </h3>
+
+<h5 class="flex center mb-4">Your Ratings</h5>
+{% for rating, num in count_rating.items %}
+    <div hidden class="profile-ratings">{{rating}}</div>
+    <div hidden id="profile-rating-{{rating}}">{{num}}</div>
+{% endfor %}
+
+<div class="flex center"id="profile-canvas">
+    <canvas id="profile-ratings-chart"></canvas>
+</div>
+
+<hr>
+
+<h5 class="flex center mb-4">Your Statistics</h5>
+
+<div class="flex center">
+    <div class="flex">
+        {% for status, num in count_status.items %}
+            <div class="flex vertical center me-3 ">
+                <h1 class="profile-status">{{num}}</h1>
+                <div>{{status}}</div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock  %}

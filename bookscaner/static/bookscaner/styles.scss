@@ -1,0 +1,68 @@
+$grey: #F9F9F9;
+$darkyellow: #ffb600;
+
+body {
+    margin: 1rem;
+}
+
+.bg-grey {
+    background-color: $grey;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    &.center {
+        justify-content: center;
+    }
+
+    &.vertical {
+        flex-direction: column;
+    }
+}
+
+.index-book-container {
+    width: 18rem;
+    height: 18rem;
+}
+
+.object-contain {
+    object-fit: contain;
+}
+
+.flex-left {
+    margin-left: auto;
+    margin-right: 1.5rem;
+}
+
+.stars {
+    color:  $darkyellow;
+    font-size: 1.5rem;
+}
+
+#book-thumbnail {
+    width: 10rem;
+}
+
+
+.library-image{
+    width: 128px;
+}
+
+#profile-canvas {
+    width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 720px) {
+    #profile-canvas {
+        width:100%
+    }
+}

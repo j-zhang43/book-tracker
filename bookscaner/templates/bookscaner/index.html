@@ -1,0 +1,53 @@
+{% extends "bookscaner/layout.html" %}
+
+{% block body %}
+    <div class="mb-2">
+
+        <h3>Currently Reading</h3>
+
+        <div class="flex mb-4">
+            {% for book in currently_reading %}
+                <a href="book/{{book.book_id}}">
+                    <div class="border border-secondary rounded p-3 me-2 index-book-container">
+                        <div class="flex center">
+                            <img src="{{book.image_src}}" class="library-image m-2">
+                            <h4 class="text-center">{{book.title | slice:"20"}}</h4>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        <hr>
+
+        <h3>Recently Viewed</h3>
+
+        <div class="flex mb-4">
+            {% for book in most_recent reversed %}
+                <a href="book/{{book.book_id}}">
+                    <div class="border border-secondary rounded p-3 me-2 index-book-container">
+                        <div class="flex center">
+                            <img src="{{book.image_src}}" class="library-image m-2">
+                            <h4 class="text-center">{{book.title | slice:"20"}}</h4>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        <hr>
+
+        <h3>Popular Books</h3>
+
+        <div class="flex mb-4">
+            {% for book in popular_books %}
+                <a href="book/{{book.book.book_id}}">
+                    <div class="border border-secondary rounded p-3 me-2 index-book-container">
+                        <div class="flex center">
+                            <img src="{{book.book.image_src}}" class="library-image m-2">
+                            <h4 class="text-center">{{book.book.title | slice:"20"}}</h4>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock  %}

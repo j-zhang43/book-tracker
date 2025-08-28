@@ -1,0 +1,24 @@
+{% extends "bookscaner/layout.html" %}
+
+{% block body %}
+
+    {% if message %}
+        <h2>{{message}}</h2>
+    {% endif %}
+
+    <form action="{% url "login" %}" method="post">
+        {% csrf_token %}
+        
+        <div class="mb-2">
+            <label for="username" class="form-label">Username:</label>
+            <input class="form-control" type="text" name="username">
+        </div>
+
+        <div class="mb-2">
+            <label for="password" class="form-label">Password:</label>
+            <input class="form-control" type="password" name="password">
+        </div>
+
+        <input type="submit" value="Login" class="btn btn-primary">
+    </form>
+{% endblock  %}

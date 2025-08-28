@@ -1,0 +1,39 @@
+{% extends "bookscaner/layout.html" %}
+
+{% block body %}
+    <div id="page" hidden>book</div>
+
+    <div class="flex">
+        <img class="ms-3 object-contain" src="{{ book.image_src}}" id="book-thumbnail">
+        {% if user.is_authenticated %}
+            <div class="flex vertical center flex-left"> 
+                <div>
+                    <span class="stars" id="book-stars">
+                        <i class="bi bi-star" id="1"></i>
+                        <i class="bi bi-star" id="2"></i>
+                        <i class="bi bi-star" id="3"></i>
+                        <i class="bi bi-star" id="4"></i>
+                        <i class="bi bi-star" id="5"></i>
+                    </span>
+                    {% if num_ratings %}
+                        <span id="book-rating">{{ avg_rating }}</span>
+                        <span>({{ num_ratings }})</span>
+                    {% else %}
+                        <span>No ratings</span>
+                    {% endif %}
+                </div>
+
+                <br>
+                <button class="btn btn-primary " id="book-library-btn">{% if is_in_library %}Remove from Library {% else %}Add to Library{% endif %}</button>
+            </div>
+        {% endif %}
+        
+        <div class="m-3">
+            <h1> {{ book.title }}</h1>
+            <h4> By {{ book.author }} </h4>
+            <div> {{ book.description | safe }}</div>
+            <div> {{ book.published_date }}</div>
+        </div>
+    </div>
+    
+{% endblock  %}

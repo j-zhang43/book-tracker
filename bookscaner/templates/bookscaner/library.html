@@ -1,0 +1,57 @@
+{% extends "bookscaner/layout.html" %}
+
+{% block body %}
+    <div id="page" hidden>library</div>
+
+    <ul class="list-group">
+
+        {% for book in books %}
+            <li class="list-group-item">
+                <a href="/book/{{book.book_info.book_id}}">
+                   <div class="flex center">
+                        <img src="{{book.book_info.image_src}}" class="ms-4 library-image">
+
+                        <div class="flex-left p-3">
+                            <div class="mb-2">
+                                <span class="stars center" id="library-stars-{{book.book_info.book_id}}">
+                                    <i class="bi bi-star" id="1"></i>
+                                    <i class="bi bi-star" id="2"></i>
+                                    <i class="bi bi-star" id="3"></i>
+                                    <i class="bi bi-star" id="4"></i>
+                                    <i class="bi bi-star" id="5"></i>
+                                    
+                                    {% if book.rating %}
+                                        <div class="library-rating" hidden>{{book.rating}}</div>
+                                    {% endif %}
+                                </span>
+                            </div>
+                            
+                            <select class="form-select" id="library-select-{{book.book_info.book_id}}">
+                                <option {% if book.status == "Reading" or not book.status %} selected {% endif %} value="Reading">Reading</option>
+                                <option {% if book.status == "Finished" %} selected {% endif %} value="Finished">Finished</option>
+                                <option {% if book.status == "On Hold" %} selected {% endif %} value="On Hold">On Hold</option>
+                                <option {% if book.status == "Dropped" %} selected {% endif %} value="Dropped">Dropped</option>
+                                <option {% if book.status == "Waitlist" %} selected {% endif %} value="Waitlist">Waitlist</option>
+                            </select>
+                        </div>
+                   </div>
+
+                   <div class="m-4">
+                            <h5>{{book.book_info.title}}</h5>
+                            {% if book.book_info.title %}
+                                <div>{{book.book_info.author}}</div>
+                            {% endif %}
+                            {% if book.book_info.description %}
+                                <div class="text-secondary library-description">{{book.book_info.description | safe }}</div>
+                            {% endif %}
+                            {% if book.book_info.published_date %}
+                                <div class="text-secondary">{{book.book_info.published_date}}</div>
+                            {% endif %}
+                        </div>
+                </a>
+            </li>
+        {% empty %}
+            <h2> No books in your library</h2>
+        {% endfor %}
+    </ul>
+{% endblock %}
